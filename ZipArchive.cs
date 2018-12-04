@@ -276,18 +276,19 @@ namespace Xamarin.Tools.Zip
 
 		/// <summary>
 		/// Extracts all the entries from the archive and places them in the
-		/// directory indicated by the <paramref name="destinationDirectory"/> parameter. 
+		/// directory indicated by the <paramref name="destinationDirectory"/> parameter.
 		/// If <paramref name="destinationDirectory"/> is <c>null</c> or empty, the default destination directory
 		/// as passed to <see cref="ZipArchive.Open (string,FileMode,string,bool,IPlatformOptions)"/> is used.
 		/// </summary>
 		/// <returns>The all.</returns>
 		/// <param name="destinationDirectory">Destination directory.</param>
-		public void ExtractAll (string destinationDirectory = null)
+		/// <param name="password">Password of the ZipEntry</param>
+		public void ExtractAll (string destinationDirectory = null, string password = null)
 		{
 			foreach (ZipEntry ze in this) {
 				if (ze == null)
 					continue;
-				ze.Extract (destinationDirectory);
+				ze.Extract (destinationDirectory, password);
 			}
 		}
 
